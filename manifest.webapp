@@ -1,0 +1,21 @@
+{
+  "name": "Snake",
+  "description": "Eat as much food as you can!",
+  "launch_path": "/index.html",
+  "developer": {
+    "name": "Gareth Aye <gareth.aye@gmail.com>"
+  },
+
+  "locales": {
+    "en-US": {
+      "name": "Snake",
+      "description": "Eat as much food as you can!"
+    }
+  },
+
+  "default_locale": "en-US",
+
+  "icons": {
+    "128": "/style/icons/Blank.png"
+  }
+}
