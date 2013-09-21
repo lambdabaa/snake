@@ -1,8 +1,11 @@
+/* global define */
 define('snakeworker', [
   'actions',
   'gamestate',
   'screen'
 ], function(Actions, GameState, Screen) {
+  'use strict';
+
   /**
    * @constructor
    */

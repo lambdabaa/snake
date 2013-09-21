@@ -1,4 +1,7 @@
+/* global define */
 define('keyboardcontroller', ['actions'], function(Actions) {
+  'use strict';
+
   /**
    * @constructor
    */

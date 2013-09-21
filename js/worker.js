@@ -1,10 +1,10 @@
-/**
- * @fileoverview Main entry point for javascript that runs in the canvas iframe.
- */
+/* global require, requirejs */
 requirejs.config({
   'baseUrl': 'js'
 });
 require(['snakeworker'], function(SnakeWorker) {
+  'use strict';
+
   var worker = new SnakeWorker();
   worker.start();
 });

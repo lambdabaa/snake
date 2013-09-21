@@ -1,3 +1,4 @@
+/* global define */
 define(Object.freeze({
   DOWN: 'down',
   LEFT: 'left',

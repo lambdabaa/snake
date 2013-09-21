@@ -1,8 +1,11 @@
+/* global define */
 define('gamestate', [
   'direction',
   'entity',
   'screen'
 ], function(Direction, Entity, Screen) {
+  'use strict';
+
   /**
    * @constructor
    * @param {number} height board height.
@@ -112,9 +115,9 @@ define('gamestate', [
    */
   function zero(height, width) {
     var board = [];
-    for (var row = 0; row < height; row++) {
+    for (var row = 0; row < height; row += 1) {
       var next = [];
-      for (var col = 0; col < width; col++) {
+      for (var col = 0; col < width; col += 1) {
         next[col] = Entity.EMPTY;
       }
 

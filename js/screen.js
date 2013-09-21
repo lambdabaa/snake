@@ -1,10 +1,12 @@
+/* global define */
 define('screen', function() {
+  'use strict';
+
   /**
    * @constructor
    */
   function Screen() {
   }
-
   /**
    * Size of a square.
    * @type {number}
@@ -12,7 +14,7 @@ define('screen', function() {
   Screen.SQUARE_SIZE = 8;
 
   Screen.Selector = Object.freeze({
-    'canvas': '#screen-canvas'
+    CANVAS: '#screen-canvas'
   });
 
   Screen.prototype = {
@@ -22,7 +24,7 @@ define('screen', function() {
     state: null,
 
     get canvas() {
-      return document.querySelector(Screen.Selector['canvas']);
+      return document.querySelector(Screen.Selector.CANVAS);
     },
 
     get height() {

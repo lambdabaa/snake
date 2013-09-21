@@ -1,4 +1,7 @@
+/* global define */
 define('snake', ['keyboardcontroller'], function(KeyboardController) {
+  'use strict';
+
   /**
    * @constructor
    */
@@ -35,7 +38,7 @@ define('snake', ['keyboardcontroller'], function(KeyboardController) {
      */
     onMessage: function(event) {
       // TODO(gaye)
-      console.log(event.data);
+      throw event.data;
     },
 
     start: function() {
