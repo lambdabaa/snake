@@ -1,40 +1,44 @@
-/**
- * @constructor
- */
-function KeyboardController() {
-}
-
-KeyboardController.prototype = {
-  onKeydown: function(event) {
-    var actionDetail;
-    switch (event.keyCode) {
-      case 32:
-        actionDetail = 'toggle-pause';
-        break;
-      case 37:
-        actionDetail = 'left';
-        break;
-      case 38:
-        actionDetail = 'up';
-        break;
-      case 39:
-        actionDetail = 'right';
-        break;
-      case 40:
-        actionDetail = 'down';
-        break;
-      default:
-        break;
-    }
-
-    var action = new CustomEvent('action', { 'detail': actionDetail });
-    window.dispatchEvent(action);
-  },
-
-  start: function() {
-    document.addEventListener('keydown', this.onKeydown.bind(this), false);
+define('keyboardcontroller', ['actions'], function(Actions) {
+  /**
+   * @constructor
+   */
+  function KeyboardController() {
   }
-};
 
-var controller = new KeyboardController();
-controller.start();
+  KeyboardController.prototype = {
+    onKeydown: function(event) {
+      var actionDetail;
+      switch (event.keyCode) {
+        case 32:
+          actionDetail = Actions.TOGGLE_PAUSE;
+          break;
+        case 37:
+          actionDetail = Actions.LEFT;
+          break;
+        case 38:
+          actionDetail = Actions.UP;
+          break;
+        case 39:
+          actionDetail = Actions.RIGHT;
+          break;
+        case 40:
+          actionDetail = Actions.DOWN;
+          break;
+        default:
+          break;
+      }
+
+      var action = new CustomEvent('action', { 'detail': actionDetail });
+      window.dispatchEvent(action);
+    },
+
+    /**
+     * Begin to listen to the document for keydown events.
+     */
+    start: function() {
+      document.addEventListener('keydown', this.onKeydown.bind(this), false);
+    }
+  };
+
+  return KeyboardController;
+});
