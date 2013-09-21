@@ -3,7 +3,7 @@ default: lint
 
 .PHONY: lint
 lint:
-	jshint js --exclude 'js/alameda.js'
+	node_modules/.bin/jshint js --exclude 'js/alameda.js'
 
 .PHONY: test
 test:
