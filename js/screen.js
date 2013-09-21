@@ -7,49 +7,47 @@ define('screen', function() {
    */
   function Screen() {
   }
+
   /**
    * Size of a square.
    * @type {number}
    */
   Screen.SQUARE_SIZE = 8;
 
-  Screen.Selector = Object.freeze({
-    CANVAS: '#screen-canvas'
-  });
-
   Screen.prototype = {
+    /**
+     * @type {Element}
+     */
+    element: null,
+
     /**
      * @type {GameState}
      */
     state: null,
 
-    get canvas() {
-      return document.querySelector(Screen.Selector.CANVAS);
-    },
-
     get height() {
-      return this.canvas.height;
+      return this.element.height;
     },
 
     get width() {
-      return this.canvas.width;
+      return this.element.width;
     },
 
     /**
-     * Initial game board load.
+     * @param {Element} el element to decorate.
      */
-    render: function() {
-      var canvas = this.canvas;
-      var context = canvas.getContext('2d');
+    decorate: function(el) {
+      var context = el.getContext('2d');
       context.fillStyle = 'rgb(0, 0, 0)';
-      context.fillRect(0, 0, this.width, this.height);
+      context.fillRect(0, 0, el.width, el.height);
+      this.element = el;
     },
 
     /**
      * Incremental game board load.
      */
     refresh: function() {
-      var canvas = this.canvas;
+      var canvas = this.element;
       var context = canvas.getContext('2d');
 
       // Clear the board.
