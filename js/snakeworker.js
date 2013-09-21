@@ -10,9 +10,11 @@ define('snakeworker', [
    * @constructor
    */
   function SnakeWorker() {
+    var canvas = document.getElementById('screen-canvas');
+    var state = new GameState(canvas.height, canvas.width);
     var screen = new Screen();
-    var state = new GameState(screen.height, screen.width);
     screen.state = state;
+    this.canvas = canvas;
     this.screen = screen;
     this.state = state;
   }
@@ -23,6 +25,11 @@ define('snakeworker', [
   SnakeWorker.FREQUENCY = 1000.0 / 20.0;
 
   SnakeWorker.prototype = {
+    /**
+     * @type {HTMLCanvasElement}
+     */
+    canvas: null,
+
     /**
      * @type {Screen}
      */
@@ -61,7 +68,7 @@ define('snakeworker', [
     },
 
     start: function() {
-      this.screen.render();
+      this.screen.decorate(this.canvas);
 
       // Listen for actions from the parent window.
       window.addEventListener('message', this.onMessage.bind(this), false);
