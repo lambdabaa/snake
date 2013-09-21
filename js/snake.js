@@ -6,13 +6,15 @@ define('snake', ['keyboardcontroller'], function(KeyboardController) {
    * @constructor
    */
   function Snake() {
-    var iframe = document.getElementById('screen');
-    this.iframeWindow = iframe.contentWindow;
-
-    var keyboard = new KeyboardController();
-    keyboard.start();
-    this.keyboard = keyboard;
+    this.iframeWindow = document.getElementById(Snake.IFRAME_ID).contentWindow;
+    this.keyboard = new KeyboardController();
   }
+
+  /**
+   * DOM id for the iframe responsible for the canvas.
+   * @type {string}
+   */
+  Snake.IFRAME_ID = 'screen';
 
   Snake.prototype = {
     /**
@@ -33,17 +35,9 @@ define('snake', ['keyboardcontroller'], function(KeyboardController) {
       this.iframeWindow.postMessage(event.detail, window.location.origin);
     },
 
-    /**
-     * @param {Event} event message sent from worker.
-     */
-    onMessage: function(event) {
-      // TODO(gaye)
-      throw event.data;
-    },
-
     start: function() {
-      window.addEventListener('message', this.onMessage.bind(this), false);
       window.addEventListener('action', this.onAction.bind(this), false);
+      this.keyboard.start();
     }
   };
 
