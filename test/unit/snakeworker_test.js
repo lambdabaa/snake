@@ -17,38 +17,48 @@ suite('SnakeWorker', function() {
   });
 
   suite('#move', function() {
-    test.skip('should update the game state', function() {
+    test('should update the game state', function() {
+      assert.fail();
     });
 
-    test.skip('should refresh the ui', function() {
+    test('should refresh the ui', function() {
+      assert.fail();
     });
 
-    test.skip('should schedule the next move', function() {
+    test('should schedule the next move', function() {
+      assert.fail();
     });
   });
 
   suite('#onMessage', function() {
-    test.skip('should change direction on command', function() {
+    test('should change direction on command', function() {
+      assert.fail();
     });
 
-    test.skip('should pause active on toggle-pause command', function() {
+    test('should pause active on toggle-pause command', function() {
+      assert.fail();
     });
 
-    test.skip('should resume inactive on toggle-pause command', function() {
+    test('should resume inactive on toggle-pause command', function() {
+      assert.fail();
     });
 
-    test.skip('should stop game on quit command', function() {
+    test('should stop game on quit command', function() {
+      assert.fail();
     });
   });
 
   suite('#start', function() {
-    test.skip('should paint the canvas', function() {
+    test('should paint the canvas', function() {
+      assert.fail();
     });
 
-    test.skip('should listen to the window for messages', function() {
+    test('should listen to the window for messages', function() {
+      assert.fail();
     });
 
-    test.skip('should make the first move', function() {
+    test('should make the first move', function() {
+      assert.fail();
     });
   });
 });

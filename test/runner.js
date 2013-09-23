@@ -1,12 +1,16 @@
+var assert;
+
 requirejs.config({
   baseUrl: '/../js/',
   paths: {
+    'chai': '../node_modules/chai/chai',
     'mocha': '../test/mocha',
     'sinon': '../node_modules/sinon/pkg/sinon'
   }
 });
 
-require(['mocha', 'sinon'], function() {
+require(['chai', 'mocha', 'sinon'], function(chai) {
+  assert = chai.assert;
   mocha.setup('tdd');
   require([
     '../test/unit/gamestate_test',
