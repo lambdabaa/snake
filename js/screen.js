@@ -1,5 +1,5 @@
 /* global define */
-define('screen', function() {
+define('screen', ['entity'], function(Entity) {
   'use strict';
 
   /**
@@ -43,10 +43,8 @@ define('screen', function() {
       this.element = el;
     },
 
-    /**
-     * Incremental game board load.
-     */
     refresh: function() {
+      console.log('[Screen] refresh');
       var canvas = this.element;
       var context = canvas.getContext('2d');
 
@@ -54,10 +52,31 @@ define('screen', function() {
       context.fillStyle = 'rgb(0, 0, 0)';
       context.fillRect(0, 0, this.width, this.height);
 
-      var head = this.state.head;
-      context.fillStyle = 'rgb(255, 255, 255)';
-      context.fillRect(head.x * Screen.SQUARE_SIZE, head.y * Screen.SQUARE_SIZE,
-          Screen.SQUARE_SIZE, Screen.SQUARE_SIZE);
+      for (var row = 0; row < this.state.height; row += 1) {
+        for (var col = 0; col < this.state.width; col += 1) {
+          var entity = this.state.board[row][col];
+          var fillStyle;
+          switch (entity) {
+            case Entity.EMPTY:
+              fillStyle = null;
+              break;
+            case Entity.FOOD:
+              fillStyle = 'rgb(0, 0, 255)';
+              break;
+            case Entity.SNAKE:
+              fillStyle = 'rgb(255, 255, 255)';
+              break;
+          }
+
+          if (!fillStyle) {
+            continue;
+          }
+
+          context.fillStyle = fillStyle;
+          context.fillRect(col * Screen.SQUARE_SIZE, row * Screen.SQUARE_SIZE,
+            Screen.SQUARE_SIZE, Screen.SQUARE_SIZE);
+        }
+      }
     }
   };
 
